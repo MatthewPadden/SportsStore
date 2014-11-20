@@ -19,7 +19,7 @@ namespace SportsStore.WebUI.HTMLHelpers
                 tag.InnerHtml = i.ToString();
 
                 if (i == pagingInfo.CurrentPage)
-                    tag.AddCssClass("selecte");
+                    tag.AddCssClass("selected");
 
                 result.Append(tag.ToString());
             }
