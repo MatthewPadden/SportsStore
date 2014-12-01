@@ -2,11 +2,15 @@
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 
 namespace SportsStore.Domain.Concrete
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class EmailSettings
     {
         public string MailToAddress = "orders@example.com";
@@ -29,6 +33,11 @@ namespace SportsStore.Domain.Concrete
             emailSettings = settings;
         }
 
+        /// <summary>
+        /// Sends the order as an email
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <param name="shippingInfo"></param>
         public void ProcessOrder(Cart cart, ShippingDetails shippingInfo)
         {
             using (var smtpClient = new SmtpClient())
@@ -76,10 +85,10 @@ namespace SportsStore.Domain.Concrete
                     .AppendFormat("Gift wrap: {0}", shippingInfo.GifWrap ? "Yes" : "No");
 
                 MailMessage mailMessage = new MailMessage(
-                    emailSettings.MailFromAddress,              // From
-                    emailSettings.MailFromAddress,              // To
-                    "New order submitted!",                     // Subject
-                    body.ToString());                           // Body
+                    emailSettings.MailFromAddress,  // From
+                    emailSettings.MailFromAddress,  // To
+                    "New order submitted!",         // Subject
+                    body.ToString());               // Body
 
                 if (emailSettings.WriteAsFile)
                 {
@@ -87,9 +96,7 @@ namespace SportsStore.Domain.Concrete
                 }
 
                 smtpClient.Send(mailMessage);
-            }
-
-            
+            }            
         }
     }
 }

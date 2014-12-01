@@ -21,8 +21,8 @@ namespace SportsStore.WebUI.Controllers
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
-                .Where(p => category == null || p.Category == category) // if category is not null, get where Category == category
-                .OrderBy(p => p.ProductID)
+                .Where(p => category == null || category == string.Empty || p.Category == category) // if category is not null/empty, get where Category == category
+                .OrderBy(p => p.ProductID) // order by ProductID
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
 
@@ -30,7 +30,7 @@ namespace SportsStore.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = category == null ?
+                    TotalItems = category == null || category == string.Empty ?
                         repository.Products.Count() :
                         repository.Products.Where(e => e.Category == category).Count()
                 },

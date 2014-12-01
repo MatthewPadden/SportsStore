@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SportsStore.UnitTests</RootNamespace>
     <AssemblyName>SportsStore.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,8 +83,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ProductControllerTests.cs" />
+    <Compile Include="Tests\SportsStore.Domain\Concrete\EmailOrderProcessorTests.cs" />
+    <Compile Include="Tests\SportsStore.Domain\Entities\CartTests.cs" />
+    <Compile Include="Tests\SportsStore.WebUI\Controllers\CartControllerTests.cs" />
+    <Compile Include="Tests\SportsStore.WebUI\Controllers\ProductControllerTests.cs" />
+    <Compile Include="Tests\SportsStore.WebUI\Controllers\NavControllerTests.cs" />
+    <Compile Include="Tests\SportsStore.WebUI\HTMLHelpers\PagingHelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

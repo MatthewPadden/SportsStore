@@ -1,0 +1,53 @@
+﻿body, td {
+    font-family: Segoe UI, Verdana;
+}
+
+h1 {
+    padding: .5em;
+    padding-top: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-bottom: 2px solid gray;
+}
+
+form {
+    margin-bottom: 0px;
+}
+
+#content {
+    padding: .9em;
+}
+
+.grid {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .grid td, .grid th {
+        border-bottom: 1px dotted gray;
+        text-align: left;
+    }
+
+.numericCol.numericCol {
+    text-align: right;
+    padding-right: 1em;
+}
+
+.message {
+    background: gray;
+    color: white;
+    padding: .2em;
+    margin-top: .25em;
+}
+
+.field-validation-error { color: red; display: block; }
+.field-validation-valid { display: none; }
+.input-validation-error { border: 1px solid red; background-color: #ffeeee; }
+.validation-summary-error { font-weight: bold; color: red; }
+.validation-summary-valid { display: none; }
+
+.editor-field { margin-bottom: .8em; }
+.editor-label { font-weight: bold; }
+    .editor-label::after { content: ":"; }
+.text-box { width: 25em; }
+.multi-line { height: 5em; font-family: 'Segoe UI', Verdana;  }
