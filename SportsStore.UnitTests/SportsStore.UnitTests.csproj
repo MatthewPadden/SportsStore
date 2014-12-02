@@ -88,6 +88,7 @@
     <Compile Include="Tests\SportsStore.WebUI\Controllers\CartControllerTests.cs" />
     <Compile Include="Tests\SportsStore.WebUI\Controllers\ProductControllerTests.cs" />
     <Compile Include="Tests\SportsStore.WebUI\Controllers\NavControllerTests.cs" />
+    <Compile Include="Tests\SportsStore.WebUI\Controllers\AdminControllerTests.cs" />
     <Compile Include="Tests\SportsStore.WebUI\HTMLHelpers\PagingHelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers\Helper.cs" />

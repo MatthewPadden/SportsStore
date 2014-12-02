@@ -6,6 +6,7 @@ using SportsStore.Domain.Entities;
 
 namespace SportsStore.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;
@@ -16,7 +17,7 @@ namespace SportsStore.WebUI.Controllers
         }
 
         // GET: Admin
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View(repository.Products);
         }
@@ -29,11 +30,35 @@ namespace SportsStore.WebUI.Controllers
             return View(product);
         }
 
-        //[HttpPost]
-        //public ActionResult Edit(Product product)
-        //{
-        //    Product prod = repository.Products
-        //        .FirstOrDefault(p => p.ProductID == product.ProductID);
-        //}
+        public ViewResult Create()
+        {
+            return View("Edit", new Product());
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveProduct(product);
+                TempData["message"] = string.Format("{0} has been saved", product.Name);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(product);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int productId)
+        {
+            Product deletedProduct = repository.DeleteProduct(productId);
+            if (deletedProduct != null)
+                TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
+
+            return RedirectToAction("Index");
+        }
     }
 }
